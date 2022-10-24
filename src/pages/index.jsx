@@ -252,9 +252,10 @@ export default function Home({ articles }) {
           Corporation where I have over 21 years’ experience in creating
           intuitive line-of-business applications of all shapes and sizes.
           I’ve built many either flying solo or by leading a team of 20 using
-          a wide spectrum of technologies from open source to enterprise. I
-          have a love of learning and a yearning to constantly improve my
-          craft."
+          a wide spectrum of technologies from open source to enterprise. I’m
+          a craftsperson with a passion for learning and a desire to constantly
+          improve my craft. I have yet to write my Shakespeare and I’ll
+          continue clicking on the keyboard until I do."
         />
       </Head>
       <Container className="mt-9">
@@ -263,14 +264,14 @@ export default function Home({ articles }) {
             Full stack software engineer, team lead and code monkey dude.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Andy, a <b>Cloud Application Development Engineer</b> at Intel
-            Corporation where I have over 21 years’ experience in creating
-            intuitive line-of-business applications of all shapes and sizes.
-            I’ve built many either flying solo or by leading a team of 20 using
-            a wide spectrum of technologies from open source to enterprise. I
-            have a love of learning and a yearning to constantly improve my
-            craft. I have yet to write my Shakespeare and I’ll continue pounding
-            on the keyboard until I do.
+            I’m Andy, a <strong>Cloud Application Development Engineer</strong>{' '}
+            at Intel Corporation where I have over 21 years’ experience in
+            creating intuitive line-of-business applications of all shapes and
+            sizes. I’ve built many either flying solo or by leading a team of 20
+            using a wide spectrum of technologies from open source to
+            enterprise. I’m a craftsperson with a passion for learning and a
+            desire to constantly improve my craft. I have yet to write my
+            Shakespeare and I’ll continue clicking on the keyboard until I do.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
