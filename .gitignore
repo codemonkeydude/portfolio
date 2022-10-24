@@ -37,3 +37,7 @@ yarn-error.log*
 
 # generated files
 /public/rss/
+
+# cypress
+/cypress/screenshots/
+/cypress/videos/
