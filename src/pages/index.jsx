@@ -12,10 +12,7 @@ import image2 from '@/images/photos/rate-validation-app/composite-rounded-corner
 import image3 from '@/images/photos/translation-app/composite-rounded-corners-censored.jpg'
 import image4 from '@/images/photos/placeholder.jpg'
 import image5 from '@/images/photos/placeholder.jpg'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import logoIntel from '@/images/logos/intel.svg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
@@ -134,35 +131,35 @@ function Newsletter() {
 function Resume() {
   let resume = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
+      company: 'Intel',
+      title: 'Cloud Application Development Engineer',
+      logo: logoIntel,
+      start: '2020',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear(),
       },
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
-    },
-    {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
-    },
-    {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
+      company: 'Intel',
+      title: 'Senior Software Application Engineer',
+      logo: logoIntel,
       start: '2008',
-      end: '2011',
+      end: '2020',
+    },
+    {
+      company: 'Intel',
+      title: 'Software Application Engineer',
+      logo: logoIntel,
+      start: '2005',
+      end: '2008',
+    },
+    {
+      company: 'Intel',
+      title: 'Site Planner',
+      logo: logoIntel,
+      start: '1995',
+      end: '2005',
     },
   ]
 
@@ -172,7 +169,7 @@ function Resume() {
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
       </h2>
-      <ol className="mt-6 space-y-4">
+      <ol className="mt-6 space-y-1">
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
@@ -184,7 +181,7 @@ function Resume() {
                 {role.company}
               </dd>
               <dt className="sr-only">Role</dt>
-              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+              <dd className="w-full text-xs text-zinc-500 dark:text-zinc-400">
                 {role.title}
               </dd>
               <dt className="sr-only">Date</dt>
@@ -206,10 +203,10 @@ function Resume() {
           </li>
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
+      {/* <Button href="#" variant="secondary" className="group mt-6 w-full">
         Download CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
+      </Button> */}
     </div>
   )
 }
@@ -248,14 +245,7 @@ export default function Home({ articles }) {
         <title>Andy Jeffrey - code monkey dude</title>
         <meta
           name="description"
-          content="I’m Andy, a Cloud Application Development Engineer at Intel
-          Corporation where I have over 21 years’ experience in creating
-          intuitive line-of-business applications of all shapes and sizes.
-          I’ve built many either flying solo or by leading a team of 20 using
-          a wide spectrum of technologies from open source to enterprise. I’m
-          a craftsperson with a passion for learning and a desire to constantly
-          improve my craft. I have yet to write my Shakespeare and I’ll
-          continue clicking on the keyboard until I do."
+          content="I’m Andy, a Cloud Application Development Engineer at Intel Corporation where I have over 21 years’ experience in creating intuitive line-of-business applications of all shapes and sizes. Over the years, my passion for continuous learning and striving to improve my craft has built up to an impressive spectrum of technologies that I can bring to every project. Whether it is flying solo or leading a large team of developers, I enjoy the process of crafting solutions that delight customers and make their requirements a reality."
         />
       </Head>
       <Container className="mt-9">
@@ -267,12 +257,12 @@ export default function Home({ articles }) {
             I’m Andy, a <strong>Cloud Application Development Engineer</strong>{' '}
             at Intel Corporation where I have over 21 years’ experience in
             creating intuitive line-of-business applications of all shapes and
-            sizes. Over the years, my passion for learning and strive to improve
-            my craft, I’ve built up an impressive spectrum of technologies that
-            I can bring to bear on each project. Whether it is flying solo or
-            leading a large team of developers, I enjoy the process of crafting
-            solutions that delight customers and make their requirements a
-            reality.
+            sizes. Over the years, my passion for continuous learning and
+            striving to improve my craft has built up to an impressive spectrum
+            of technologies that I can bring to every project. Whether it is
+            flying solo or leading a large team of developers, I enjoy the
+            process of crafting solutions that delight customers and make their
+            requirements a reality.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -297,12 +287,12 @@ export default function Home({ articles }) {
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
-            {articles.map((article) => (
+            {/* {articles.map((article) => (
               <Article key={article.slug} article={article} />
-            ))}
+            ))} */}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
+            {/* <Newsletter /> */}
             <Resume />
           </div>
         </div>
