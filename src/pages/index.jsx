@@ -7,9 +7,9 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { TwitterIcon, GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
-import image1 from '@/images/photos/rate-validation-app/composite-rounded-corners-censored.jpg'
-import image2 from '@/images/photos/translation-app/composite-rounded-corners-censored.jpg'
-import image3 from '@/images/photos/placeholder.jpg'
+import image1 from '@/images/photos/supply-chain-classification-management-app/composite-rounded-corners-censored.jpg'
+import image2 from '@/images/photos/rate-validation-app/composite-rounded-corners-censored.jpg'
+import image3 from '@/images/photos/translation-app/composite-rounded-corners-censored.jpg'
 import image4 from '@/images/photos/placeholder.jpg'
 import image5 from '@/images/photos/placeholder.jpg'
 import logoAirbnb from '@/images/logos/airbnb.svg'
@@ -267,11 +267,12 @@ export default function Home({ articles }) {
             I’m Andy, a <strong>Cloud Application Development Engineer</strong>{' '}
             at Intel Corporation where I have over 21 years’ experience in
             creating intuitive line-of-business applications of all shapes and
-            sizes. I’ve built many either flying solo or by leading a team of 20
-            using a wide spectrum of technologies from open source to
-            enterprise. I’m a craftsperson with a passion for learning and a
-            desire to constantly improve my craft. I have yet to write my
-            Shakespeare and I’ll continue clicking on the keyboard until I do.
+            sizes. Over the years, my passion for learning and strive to improve
+            my craft, I’ve built up an impressive spectrum of technologies that
+            I can bring to bear on each project. Whether it is flying solo or
+            leading a large team of developers, I enjoy the process of crafting
+            solutions that delight customers and make their requirements a
+            reality.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
