@@ -5,14 +5,14 @@ describe('basic tests', () => {
 
   it('displays the resources text', () => {
     cy.get('h1')
-    .contains('Software');
+      .contains('software');
   })
 
   it('renders the Netlify logo image', () => {
     cy.get('img')
-    .should('be.visible')
-    .and(($img) => {
-      expect($img[0].naturalWidth).to.be.greaterThan(0);
-    })
+      .should('be.visible')
+      .and(($img) => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      })
   })
 })
