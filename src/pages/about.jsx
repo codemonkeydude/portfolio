@@ -17,6 +17,7 @@ function SocialLink({ className, href, children, icon: Icon }) {
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
+        target="_blank"
         className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
       >
         <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
@@ -41,10 +42,11 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About - Spencer Sharp</title>
+        <title>About - Andy Jeffrey</title>
         <meta
           name="description"
-          content="I’m Spencer Sharp. I live in New York City, where I design the future."
+          content="I’m Andy Jeffrey. I live in Portland Oregon, where I design and
+          build applications."
         />
       </Head>
       <Container className="mt-16 sm:mt-32">
@@ -61,58 +63,69 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I’m Spencer Sharp. I live in New York City, where I design the
-              future.
+              I’m Andy Jeffrey. I live in Portland Oregon, where I design and
+              build applications.
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                I’ve loved making things for as long as I can remember, and
-                wrote my first program when I was 6 years old, just two weeks
-                after my mom brought home the brand new Macintosh LC 550 that I
-                taught myself to type on.
+                <strong>TL;DR</strong> &middot; I’m a dude who started with an
+                Architecture degree from U of O and became a coder at Intel.
               </p>
               <p>
-                The only thing I loved more than computers as a kid was space.
-                When I was 8, I climbed the 40-foot oak tree at the back of our
-                yard while wearing my older sister’s motorcycle helmet, counted
-                down from three, and jumped — hoping the tree was tall enough
-                that with just a bit of momentum I’d be able to get to orbit.
+                For as long as I can remember, I’ve had a love for building
+                things. Tinker Toys and Legos, of course. Then a 3 story
+                backyard fort built out of pilfered construction debris (it’s a
+                good thing my mom kept my tetanus shots current). I built
+                hundreds of model airplanes, plastic and balsa. I nearly
+                completed the entire Guillow line by the time I graduated from
+                high school.
               </p>
               <p>
-                I spent the next few summers indoors working on a rocket design,
-                while I recovered from the multiple surgeries it took to fix my
-                badly broken legs. It took nine iterations, but when I was 15 I
-                sent my dad’s Blackberry into orbit and was able to transmit a
-                photo back down to our family computer from space.
+                Drawing was another passion. When I was in 4th grade I won an
+                art contest. Though looking back the competition wasn’t that
+                impressive. I was a constant doodler. My mom enrolled me in
+                several art programs and I did very well in my high school
+                drafting classes.
               </p>
               <p>
-                Today, I’m the founder of Planetaria, where we’re working on
-                civilian space suits and manned shuttle kits you can assemble at
-                home so that the next generation of kids really <em>can</em>{' '}
-                make it to orbit — from the comfort of their own backyards.
+                When it was time for college I thought Architecture would be the
+                way to go and not just because it was the first major on the
+                list (like &quot;Weird Al&quot; Yankovic). I could leverage my
+                creative side and build buildings. I did well and graduated in
+                the early nineties from U of O, right at the end of a recession.
+                At that time there were no Architecture jobs to be found, even
+                for doing bathroom elevations (something we joked about in
+                Architecture school). I found a job at Intel planning office
+                space. It was there that I found my true passion, coding.
               </p>
+              <p></p>
+              <p>Today, ,,,</p>
             </div>
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink href="#" icon={TwitterIcon}>
+              <SocialLink
+                href="https://twitter.com/CodeMonkeyDude"
+                icon={TwitterIcon}
+              >
                 Follow on Twitter
               </SocialLink>
-              <SocialLink href="#" icon={InstagramIcon} className="mt-4">
-                Follow on Instagram
-              </SocialLink>
-              <SocialLink href="#" icon={GitHubIcon} className="mt-4">
+              <SocialLink
+                href="https://github.com/codemonkeydude"
+                icon={GitHubIcon}
+                className="mt-4"
+              >
                 Follow on GitHub
               </SocialLink>
               <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
                 Follow on LinkedIn
               </SocialLink>
               <SocialLink
-                href="mailto:spencer@planetaria.tech"
+                href="mailto:codemonkeydudex@gmail.com"
                 icon={MailIcon}
                 className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
               >
-                spencer@planetaria.tech
+                codemonkeydudex@gmail.com
               </SocialLink>
             </ul>
           </div>
