@@ -73,7 +73,7 @@ export default function About() {
               </p>
               <p>
                 For as long as I can remember, I’ve had a love for building
-                things. Tinker Toys and Legos, of course. Then a 3 story
+                things. Tinker Toys and Legos, of course. Later, a 3 story
                 backyard fort built out of pilfered construction debris (it’s a
                 good thing my mom kept my tetanus shots current). I built
                 hundreds of model airplanes, plastic and balsa. I nearly
@@ -92,14 +92,29 @@ export default function About() {
                 way to go and not just because it was the first major on the
                 list (like &quot;Weird Al&quot; Yankovic). I could leverage my
                 creative side and build buildings. I did well and graduated in
-                the early nineties from U of O, right at the end of a recession.
-                At that time there were no Architecture jobs to be found, even
-                for doing bathroom elevations (something we joked about in
-                Architecture school). I found a job at Intel planning office
+                the early nineties from U of O right in the middle of a
+                recession. There were no Architecture jobs to be found, even
+                doing bathroom elevations (something we joked about in
+                Architecture studio). I found a job at Intel planning office
                 space. It was there that I found my true passion, coding.
               </p>
-              <p></p>
-              <p>Today, ,,,</p>
+              <p>
+                It was while I was a Site Planner at intel that I discovered
+                coding. I helped automate several processes using classic ASP
+                3.0 and then .NET when it was released. I built a reputation as
+                an effective application developer. Intel decided to make me a
+                fulltime developer in 2005 and I joined a team of
+                &quot;embedded&quot; IT software professionals practicing Agile.
+                I learned a ton from those folks. We practice full Agile using
+                pair programming, CI/CD, the works.
+              </p>
+              <p>
+                Today, I’m in IT Product Engineering and building elaborate
+                cloud aware applications using the microservice architecture and
+                leading a team of developers. It’s not what I majored in or
+                expected to be doing when I was growing up but now I can’t think
+                of a better occupation. I’m living the dream.
+              </p>
             </div>
           </div>
           <div className="lg:pl-20">
@@ -117,7 +132,11 @@ export default function About() {
               >
                 Follow on GitHub
               </SocialLink>
-              <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
+              <SocialLink
+                href="https://www.linkedin.com/in/andy-jeffrey-b342673"
+                icon={LinkedInIcon}
+                className="mt-4"
+              >
                 Follow on LinkedIn
               </SocialLink>
               <SocialLink
