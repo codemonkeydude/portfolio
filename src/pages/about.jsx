@@ -99,21 +99,25 @@ export default function About() {
                 space. It was there that I found my true passion, coding.
               </p>
               <p>
-                It was while I was a Site Planner at intel that I discovered
+                It was while I was a Site Planner at Intel that I discovered
                 coding. I helped automate several processes using classic ASP
-                3.0 and then .NET when it was released. I built a reputation as
-                an effective application developer. Intel decided to make me a
-                fulltime developer in 2005 and I joined a team of
+                3.0 and then .NET when it was released. As a result, I built a
+                reputation as an effective application developer. Intel decided
+                to make me a fulltime developer in 2005 and I joined a team of
                 &quot;embedded&quot; IT software professionals practicing Agile.
                 I learned a ton from those folks. We practice full Agile using
-                pair programming, CI/CD, the works.
+                pair programming, TDD, CI/CD, the works.
               </p>
               <p>
                 Today, I’m in IT Product Engineering and building elaborate
-                cloud aware applications using the microservice architecture and
-                leading a team of developers. It’s not what I majored in or
+                cloud aware applications hosted on Azure and Intel’s internal
+                cloud. I leverage a wide range of technologies including several
+                open source stacks, the Microsoft stack and integrations with
+                many enterprise solutions (SAP, Salesforce, Apigee, etc.). I can
+                build an application from the ground up or lead a team of
+                developers to do the same. It’s not what I majored in or
                 expected to be doing when I was growing up but now I can’t think
-                of a better occupation. I’m living the dream.
+                of a better occupation.
               </p>
             </div>
           </div>
