@@ -102,9 +102,10 @@ export default function About() {
                 It was during my stint as a Site Planner that I discovered
                 coding. After pouring over stacks of software books I helped
                 automate several processes using classic ASP 3.0 and then .NET
-                when it was released. As a result, I built a reputation as an
-                effective application developer. Intel decided to make me a
-                fulltime developer in 2005 and I joined a team of
+                when it was released. I was hooked and became a lifelong learner
+                of everything to do with coding. As a result, I built a
+                reputation as an effective application developer. Intel decided
+                to make me a fulltime developer in 2005 and I joined a team of
                 &quot;embedded&quot; IT software professionals practicing Agile.
                 I learned a ton from those folks. We practice full Agile using
                 pair programming, TDD, CI/CD, the works.
@@ -118,7 +119,9 @@ export default function About() {
                 build an application from the ground up or lead a team of
                 developers to do the same. It’s not what I majored in or
                 expected to be doing when I was growing up but now I can’t
-                imagine doing anything else.
+                imagine doing anything else. In a way, I’m actually practicing
+                my major it’s just that I’m designing and building using ones
+                and zeros instead of brick and morter.
               </p>
             </div>
           </div>

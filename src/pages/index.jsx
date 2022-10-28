@@ -7,9 +7,9 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { TwitterIcon, GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
-import image1 from '@/images/photos/supply-chain-classification-management-app/composite-rounded-corners-censored.jpg'
-import image2 from '@/images/photos/rate-validation-app/composite-rounded-corners-censored.jpg'
-import image3 from '@/images/photos/translation-app/composite-rounded-corners-censored.jpg'
+import image1 from '@/images/photos/supply-chain-classification-management-app/composite-rounded-corners-censored-compressed.jpg'
+import image2 from '@/images/photos/rate-validation-app/composite-rounded-corners-censored-compressed.jpg'
+import image3 from '@/images/photos/translation-app/composite-rounded-corners-censored-compressed.jpg'
 import image4 from '@/images/photos/placeholder.jpg'
 import image5 from '@/images/photos/placeholder.jpg'
 import logoIntel from '@/images/logos/intel.svg'
@@ -255,13 +255,14 @@ export default function Home({ articles }) {
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I’m Andy, a <strong>Cloud Application Development Engineer</strong>{' '}
-            at Intel Corporation where I have over 21 years’ experience in
-            creating intuitive line-of-business applications of all shapes and
-            sizes. Over the years, my passion for continuous learning and
-            striving to improve my craft has built up to an impressive spectrum
-            of technologies that I can bring to every project. Whether it is
-            flying solo or leading a large team of developers, I enjoy the
-            process of crafting solutions that delight customers and make their
+            at Intel Corporation where I have over{' '}
+            {new Date().getFullYear() - 2001} years’ experience in creating
+            intuitive line-of-business applications of all shapes and sizes.
+            Over the years, my passion for continuous learning and striving to
+            improve my craft has built up to an impressive spectrum of
+            technologies that I can bring to every project. Whether it is flying
+            solo or leading a large team of developers, I enjoy the process of
+            crafting solutions that delight customers and make their
             requirements a reality.
           </p>
           <div className="mt-6 flex gap-6">
