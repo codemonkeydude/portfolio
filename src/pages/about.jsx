@@ -73,12 +73,11 @@ export default function About() {
               </p>
               <p>
                 For as long as I can remember, I’ve had a love for building
-                things. Tinker Toys and Legos, of course. Later, a 3 story
-                backyard fort built out of pilfered construction debris (it’s a
-                good thing my mom kept my tetanus shots current). I built
-                hundreds of model airplanes, plastic and balsa. I nearly
-                completed the entire Guillow line by the time I graduated from
-                high school.
+                things. Tinker Toys and Legos, of course. Later, a 3 story fort
+                in our backyard built out of pilfered construction debris (good
+                thing my mom kept my tetanus shots current). I built hundreds of
+                model airplanes, plastic and balsa. I nearly completed the
+                entire Guillow line by the time I graduated from high school.
               </p>
               <p>
                 Drawing was another passion. When I was in 4th grade I won an
@@ -89,21 +88,23 @@ export default function About() {
               </p>
               <p>
                 When it was time for college I thought Architecture would be the
-                way to go and not just because it was the first major on the
-                list (like &quot;Weird Al&quot; Yankovic). I could leverage my
-                creative side and build buildings. I did well and graduated in
-                the early nineties from U of O right in the middle of a
-                recession. There were no Architecture jobs to be found, even
-                doing bathroom elevations (something we joked about in
-                Architecture studio). I found a job at Intel planning office
-                space. It was there that I found my true passion, coding.
+                way to go and not just because it was on the first page of the
+                college pamphlet (like &quot;Weird Al&quot; Yankovic). I figured
+                I could leverage my creative side and build buildings. I did
+                well and graduated in the early nineties from U of O right smack
+                in the middle of a recession. There were no Architecture jobs to
+                be found, even for drawing bathroom elevations (something we
+                joked about in Architecture studio). Soon I found an alternate
+                job at Intel planning office space. It was hard thankless work
+                but it paid the bills.
               </p>
               <p>
-                It was while I was a Site Planner at Intel that I discovered
-                coding. I helped automate several processes using classic ASP
-                3.0 and then .NET when it was released. As a result, I built a
-                reputation as an effective application developer. Intel decided
-                to make me a fulltime developer in 2005 and I joined a team of
+                It was during my stint as a Site Planner that I discovered
+                coding. After pouring over stacks of software books I helped
+                automate several processes using classic ASP 3.0 and then .NET
+                when it was released. As a result, I built a reputation as an
+                effective application developer. Intel decided to make me a
+                fulltime developer in 2005 and I joined a team of
                 &quot;embedded&quot; IT software professionals practicing Agile.
                 I learned a ton from those folks. We practice full Agile using
                 pair programming, TDD, CI/CD, the works.
@@ -116,8 +117,8 @@ export default function About() {
                 many enterprise solutions (SAP, Salesforce, Apigee, etc.). I can
                 build an application from the ground up or lead a team of
                 developers to do the same. It’s not what I majored in or
-                expected to be doing when I was growing up but now I can’t think
-                of a better occupation.
+                expected to be doing when I was growing up but now I can’t
+                imagine doing anything else.
               </p>
             </div>
           </div>
