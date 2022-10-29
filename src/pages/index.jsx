@@ -7,11 +7,11 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { TwitterIcon, GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
-import image1 from '@/images/photos/supply-chain-classification-management-app/composite-rounded-corners-censored-compressed.jpg'
-import image2 from '@/images/photos/rate-validation-app/composite-rounded-corners-censored-compressed.jpg'
-import image3 from '@/images/photos/translation-app/composite-rounded-corners-censored-compressed.jpg'
-import image4 from '@/images/photos/placeholder.jpg'
-import image5 from '@/images/photos/placeholder.jpg'
+import image1 from '@/images/photos/ui-latest.png'
+import image2 from '@/images/photos/middletier-latest.png'
+import image3 from '@/images/photos/db-latest.png'
+import image4 from '@/images/photos/ci-cd-latest.png'
+import image5 from '@/images/photos/salesforce-latest.jpg'
 import logoIntel from '@/images/logos/intel.svg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
@@ -164,7 +164,7 @@ function Resume() {
   ]
 
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+    <div className="rounded-2xl border border-zinc-300 p-6 dark:border-zinc-600/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
@@ -217,11 +217,11 @@ function Photos() {
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3].map((image, imageIndex) => (
+        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
           <div
             key={imageIndex}
             className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl border border-zinc-400 dark:border-0 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
               rotations[imageIndex % rotations.length]
             )}
           >
