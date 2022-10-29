@@ -16,6 +16,15 @@ import logoIntel from '@/images/logos/intel.svg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
+import classnames from 'classnames'
+
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
+import { useState } from 'react'
 
 function MailIcon(props) {
   return (
@@ -173,7 +182,12 @@ function Resume() {
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-zinc-800 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+              <Image
+                src={role.logo}
+                alt=""
+                className="h-auto w-7"
+                unoptimized
+              />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
@@ -238,68 +252,170 @@ function Photos() {
   )
 }
 
+const technologyData = [
+  {
+    name: 'GitHub',
+    category: 'CI/CD',
+    purpose: 'Repository',
+    lastUsed: 2022,
+  },
+  {
+    name: 'GitLab',
+    category: 'CI/CD',
+    purpose: 'Repository',
+    lastUsed: 2021,
+  },
+]
+
+const columns = [
+  {
+    accessorKey: 'name',
+    header: 'Name',
+    cell: (info) => info.getValue(),
+  },
+  {
+    accessorKey: 'category',
+    header: 'Category',
+    cell: (info) => info.getValue(),
+  },
+  {
+    accessorKey: 'purpose',
+    header: 'Purpose',
+    cell: (info) => info.getValue(),
+    meta: {
+      hideUntil: 'sm',
+    },
+  },
+  {
+    accessorKey: 'lastUsed',
+    header: 'Last Used',
+    cell: (info) => info.getValue(),
+    meta: {
+      hideUntil: 'lg',
+    },
+  },
+]
+
 function TechnologyTable() {
+  const [data, setData] = useState(() => [...technologyData])
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  })
+
   return (
-    <div className="overflow-hidden rounded-2xl border border-zinc-400 dark:border-zinc-300/40">
-      <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-300/40">
-        <thead className="bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
-          <tr>
-            <th
-              scope="col"
-              className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6"
-            >
-              Name
-            </th>
-            <th
-              scope="col"
-              className="hidden px-3 py-3.5 text-left text-sm font-semibold sm:table-cell"
-            >
-              Category
-            </th>
-            <th
-              scope="col"
-              className="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
-            >
-              Purpose
-            </th>
-            <th
-              scope="col"
-              className="px-3 py-3.5 text-left text-sm font-semibold "
-            >
-              Last Used
-            </th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-zinc-200 text-zinc-500 dark:divide-zinc-500/40 dark:text-zinc-400">
-          <tr>
-            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-6">
-              GitHub
-            </td>
-            <td className="hidden whitespace-nowrap px-3 py-4 text-sm  sm:table-cell">
-              CI/CD
-            </td>
-            <td className="hidden whitespace-nowrap px-3 py-4 text-sm  lg:table-cell">
-              Repository
-            </td>
-            <td className="whitespace-nowrap px-3 py-4 text-sm ">
-              {new Date().getFullYear()}
-            </td>
-          </tr>
-          <tr>
-            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-6">
-              GitLab
-            </td>
-            <td className="hidden whitespace-nowrap px-3 py-4 text-sm  sm:table-cell">
-              CI/CD
-            </td>
-            <td className="hidden whitespace-nowrap px-3 py-4 text-sm  lg:table-cell">
-              Repository
-            </td>
-            <td className="whitespace-nowrap px-3 py-4 text-sm ">2021</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className="overflow-hidden rounded-2xl border border-zinc-400 dark:border-zinc-300/40">
+        <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-300/40">
+          <thead className="bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header, headerIndex) => (
+                  <th
+                    key={header.id}
+                    scope="col"
+                    className={classnames(
+                      'py-3.5 text-left text-sm font-semibold',
+                      header.column.columnDef.meta?.hideUntil &&
+                        `hidden ${header.column.columnDef.meta?.hideUntil}:table-cell`,
+                      headerIndex === 0 ? 'pl-4 pr-3 sm:pl-6' : 'px-3'
+                    )}
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody className="divide-y divide-zinc-200 text-zinc-500 dark:divide-zinc-500/40 dark:text-zinc-400">
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell, cellIndex) => (
+                  <td
+                    key={cell.id}
+                    className={classnames(
+                      'whitespace-nowrap py-4 text-sm',
+                      cell.column.columnDef.meta?.hideUntil &&
+                        `hidden ${cell.column.columnDef.meta?.hideUntil}:table-cell`,
+                      cellIndex === 0 ? 'pl-4 pr-3 sm:pl-6' : 'px-3'
+                    )}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* <div className="overflow-hidden rounded-2xl border border-zinc-400 dark:border-zinc-300/40">
+        <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-300/40">
+          <thead className="bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
+            <tr>
+              <th
+                scope="col"
+                className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6"
+              >
+                Name
+              </th>
+              <th
+                scope="col"
+                className="hidden px-3 py-3.5 text-left text-sm font-semibold sm:table-cell"
+              >
+                Category
+              </th>
+              <th
+                scope="col"
+                className="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
+              >
+                Purpose
+              </th>
+              <th
+                scope="col"
+                className="px-3 py-3.5 text-left text-sm font-semibold "
+              >
+                Last Used
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-zinc-200 text-zinc-500 dark:divide-zinc-500/40 dark:text-zinc-400">
+            <tr>
+              <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-6">
+                GitHub
+              </td>
+              <td className="hidden whitespace-nowrap px-3 py-4 text-sm  sm:table-cell">
+                CI/CD
+              </td>
+              <td className="hidden whitespace-nowrap px-3 py-4 text-sm  lg:table-cell">
+                Repository
+              </td>
+              <td className="whitespace-nowrap px-3 py-4 text-sm ">
+                {new Date().getFullYear()}
+              </td>
+            </tr>
+            <tr>
+              <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-6">
+                GitLab
+              </td>
+              <td className="hidden whitespace-nowrap px-3 py-4 text-sm  sm:table-cell">
+                CI/CD
+              </td>
+              <td className="hidden whitespace-nowrap px-3 py-4 text-sm  lg:table-cell">
+                Repository
+              </td>
+              <td className="whitespace-nowrap px-3 py-4 text-sm ">2021</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> */}
+    </>
   )
 }
 
