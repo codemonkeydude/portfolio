@@ -7,9 +7,9 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { TwitterIcon, GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
-import image1 from '@/images/photos/ui-latest.png'
-import image2 from '@/images/photos/middletier-latest.png'
-import image3 from '@/images/photos/db-latest.png'
+import image2 from '@/images/photos/ui-latest.png'
+import image3 from '@/images/photos/middletier-latest.png'
+import image1 from '@/images/photos/db-latest.png'
 import image4 from '@/images/photos/ci-cd-latest.png'
 import image5 from '@/images/photos/salesforce-latest.jpg'
 import logoIntel from '@/images/logos/intel.svg'
@@ -164,7 +164,7 @@ function Resume() {
   ]
 
   return (
-    <div className="rounded-2xl border border-zinc-400 p-6 dark:border-zinc-600/40">
+    <div className="rounded-2xl border border-zinc-400 p-6 dark:border-zinc-300/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
@@ -238,6 +238,71 @@ function Photos() {
   )
 }
 
+function TechnologyTable() {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-zinc-400 dark:border-zinc-300/40">
+      <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-300/40">
+        <thead className="bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
+          <tr>
+            <th
+              scope="col"
+              className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6"
+            >
+              Name
+            </th>
+            <th
+              scope="col"
+              className="hidden px-3 py-3.5 text-left text-sm font-semibold sm:table-cell"
+            >
+              Category
+            </th>
+            <th
+              scope="col"
+              className="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
+            >
+              Purpose
+            </th>
+            <th
+              scope="col"
+              className="px-3 py-3.5 text-left text-sm font-semibold "
+            >
+              Last Used
+            </th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-zinc-200 text-zinc-500 dark:divide-zinc-500/40 dark:text-zinc-400">
+          <tr>
+            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-6">
+              GitHub
+            </td>
+            <td className="hidden whitespace-nowrap px-3 py-4 text-sm  sm:table-cell">
+              CI/CD
+            </td>
+            <td className="hidden whitespace-nowrap px-3 py-4 text-sm  lg:table-cell">
+              Repository
+            </td>
+            <td className="whitespace-nowrap px-3 py-4 text-sm ">
+              {new Date().getFullYear()}
+            </td>
+          </tr>
+          <tr>
+            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-6">
+              GitLab
+            </td>
+            <td className="hidden whitespace-nowrap px-3 py-4 text-sm  sm:table-cell">
+              CI/CD
+            </td>
+            <td className="hidden whitespace-nowrap px-3 py-4 text-sm  lg:table-cell">
+              Repository
+            </td>
+            <td className="whitespace-nowrap px-3 py-4 text-sm ">2021</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 export default function Home({ articles }) {
   return (
     <>
@@ -285,14 +350,18 @@ export default function Home({ articles }) {
         </div>
       </Container>
       <Photos />
-      <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
+      <Container className="mt-16 md:mt-20 lg:mt-24">
+        <div className="grid grid-cols-1 gap-y-16 md:gap-y-20 lg:grid-cols-2 lg:gap-y-24">
+          <div className="lg:col-span-2">
+            <TechnologyTable />
+          </div>
+          <div className="hidden lg:inline-block">
+            &nbsp;
             {/* {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))} */}
           </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
+          <div className="">
             {/* <Newsletter /> */}
             <Resume />
           </div>
