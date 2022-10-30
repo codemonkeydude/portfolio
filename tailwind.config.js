@@ -3,6 +3,12 @@ module.exports = {
   content: ['./src/**/*.{js,jsx}'],
   darkMode: 'class',
   plugins: [require('@tailwindcss/typography')],
+  safelist: [
+    // dynamically set by react table
+    'sm:table-cell',
+    'md:table-cell',
+    'lg:table-cell'
+  ],
   theme: {
     fontSize: {
       xs: ['0.8125rem', { lineHeight: '1.5rem' }],
