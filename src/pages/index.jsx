@@ -1,5 +1,12 @@
-import { useState } from 'react'
-import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { useEffect, useState } from 'react'
+import { compareItems, RankingInfo, rankItem } from '@tanstack/match-sorter-utils'
+import {
+    flexRender,
+    getCoreRowModel,
+    getFilteredRowModel,
+    getSortedRowModel,
+    useReactTable,
+} from '@tanstack/react-table'
 import classnames from 'classnames'
 import clsx from 'clsx'
 import Image from 'next/future/image'
@@ -43,6 +50,32 @@ function MailIcon(props) {
     )
 }
 
+function ArrowSmallUp(props) {
+    return (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" aria-hidden="true" {...props}>
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
+                className="stroke-zinc-400 dark:stroke-zinc-500"
+            />
+        </svg>
+    )
+}
+
+function ArrowSmallDown(props) {
+    return (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" aria-hidden="true" {...props}>
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75"
+                className="stroke-zinc-400 dark:stroke-zinc-500"
+            />
+        </svg>
+    )
+}
+
 function BriefcaseIcon(props) {
     return (
         <svg
@@ -61,6 +94,38 @@ function BriefcaseIcon(props) {
             <path
                 d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5"
                 className="stroke-zinc-400 dark:stroke-zinc-500"
+            />
+        </svg>
+    )
+}
+
+function CommandLine(props) {
+    return (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" aria-hidden="true" {...props}>
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"
+                className="stroke-zinc-400 dark:stroke-zinc-500"
+            />
+        </svg>
+    )
+}
+
+function SearchIcon(props) {
+    return (
+        <svg
+            className="h-5 w-5 text-gray-400"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+            {...props}
+        >
+            <path
+                fillRule="evenodd"
+                d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                clipRule="evenodd"
             />
         </svg>
     )
@@ -304,63 +369,172 @@ const columns = [
     },
 ]
 
+function DebouncedSearch({ value: initialValue, onChange, debounce = 300 }) {
+    const [value, setValue] = useState(initialValue)
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            onChange(value)
+        }, debounce)
+
+        return () => clearTimeout(timeout)
+    }, [debounce, onChange, value])
+
+    return (
+        <div className="mx-6 mt-8 mb-6 w-full items-center justify-center md:max-w-md">
+            <label htmlFor="search-technology-experience" className="sr-only">
+                Search technology experience
+            </label>
+            <div className="relative">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                    <SearchIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                </div>
+                <input
+                    id="search-technology-experience"
+                    name="search-technology-experience"
+                    className="block w-full rounded-md border border-transparent bg-gray-700 py-2 pl-10 pr-3 text-sm placeholder-gray-400 focus:border-white focus:bg-white focus:text-gray-900 focus:placeholder-gray-500 focus:outline-none focus:ring-white sm:text-sm"
+                    placeholder="Search"
+                    type="search"
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                />
+            </div>
+        </div>
+    )
+}
+
+function Sort({ canSort, isSorted, onToggleSort }) {
+    if (!canSort) return null
+    return (
+        <div className="cursor-pointer" onClick={onToggleSort}>
+            {{
+                asc: <ArrowSmallUp className="h-3 w-3" />,
+                desc: <ArrowSmallDown className="h-3 w-3" />,
+            }[isSorted] ?? null}
+        </div>
+    )
+}
+
+function HeaderLabel({ canSort, children, onToggleSort }) {
+    return (
+        <div className="flex-grow cursor-pointer truncate text-left" onClick={canSort ? onToggleSort : undefined}>
+            {children}
+        </div>
+    )
+}
+
+function fuzzyFilter(row, columnId, value, addMeta) {
+    // Rank the item
+    const itemRank = rankItem(row.getValue(columnId), value)
+
+    // Store the itemRank info
+    addMeta({
+        itemRank,
+    })
+
+    // Return if the item should be filtered in/out
+    return itemRank.passed
+}
+
+function fuzzySort(rowA, rowB, columnId) {
+    let dir = 0
+
+    // Only sort by rank if the column has ranking information
+    if (rowA.columnFiltersMeta[columnId]) {
+        dir = compareItems(rowA.columnFiltersMeta[columnId].itemRank, rowB.columnFiltersMeta[columnId].itemRank)
+    }
+
+    // Provide an alphanumeric fallback for when the item ranks are equal
+    return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
+}
+
 function TechnologyTable() {
     const [data, setData] = useState(() => [...technologyData])
+    const [globalFilter, setGlobalFilter] = useState('')
+    const [sorting, setSorting] = useState([])
+
     const table = useReactTable({
         data,
         columns,
+        // filterFns: {
+        //     fuzzy: fuzzyFilter,
+        // },
+        state: {
+            globalFilter,
+            sorting,
+        },
         getCoreRowModel: getCoreRowModel(),
+        globalFilterFn: fuzzyFilter,
+        onGlobalFilterChange: setGlobalFilter,
+        getFilteredRowModel: getFilteredRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        onSortingChange: setSorting,
     })
 
     return (
-        <div className="max-h-[400px] overflow-auto rounded-l-2xl border border-zinc-400 dark:border-zinc-300/40">
-            <h2 className="mx-6 mt-6 flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                <BriefcaseIcon className="h-6 w-6 flex-none" />
-                <span className="ml-3">Technology Experience</span>
-            </h2>
-            <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-300/40">
-                <thead className="sticky top-0 z-20 bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id}>
-                            {headerGroup.headers.map((header, headerIndex) => (
-                                <th
-                                    key={header.id}
-                                    scope="col"
-                                    className={classnames(
-                                        'py-3.5 text-left text-sm font-semibold',
-                                        header.column.columnDef.meta?.hideUntil &&
-                                            `hidden ${header.column.columnDef.meta?.hideUntil}:table-cell`,
-                                        headerIndex === 0 ? 'pl-4 pr-3 sm:pl-6' : 'px-3',
-                                    )}
-                                >
-                                    {header.isPlaceholder
-                                        ? null
-                                        : flexRender(header.column.columnDef.header, header.getContext())}
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody className="divide-y divide-zinc-200 text-zinc-500 dark:divide-zinc-500/40 dark:text-zinc-400">
-                    {table.getRowModel().rows.map((row) => (
-                        <tr key={row.id}>
-                            {row.getVisibleCells().map((cell, cellIndex) => (
-                                <td
-                                    key={cell.id}
-                                    className={classnames(
-                                        'whitespace-nowrap py-4 text-sm',
-                                        cell.column.columnDef.meta?.hideUntil &&
-                                            `hidden ${cell.column.columnDef.meta?.hideUntil}:table-cell`,
-                                        cellIndex === 0 ? 'pl-4 pr-3 sm:pl-6' : 'px-3',
-                                    )}
-                                >
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className="rounded-l-2xl rounded-tr-2xl border border-zinc-400 dark:border-zinc-300/40">
+            <div className="flex place-content-between items-start">
+                <DebouncedSearch value={globalFilter} onChange={(e) => setGlobalFilter(e)} />
+                <h2 className="mx-6 mt-6 flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                    <CommandLine className="h-6 w-6 flex-none" />
+                    <span className="ml-3">Technology Experience</span>
+                </h2>
+            </div>
+            <div className="max-h-[400px] overflow-auto">
+                <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-300/40">
+                    <thead className="sticky top-0 z-20 bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
+                        {table.getHeaderGroups().map((headerGroup) => (
+                            <tr key={headerGroup.id}>
+                                {headerGroup.headers.map((header, headerIndex) => (
+                                    <th
+                                        key={header.id}
+                                        scope="col"
+                                        className={classnames(
+                                            'py-3.5 text-left text-sm font-semibold',
+                                            header.column.columnDef.meta?.hideUntil &&
+                                                `hidden ${header.column.columnDef.meta?.hideUntil}:table-cell`,
+                                            headerIndex === 0 ? 'pl-4 pr-3 sm:pl-6' : 'px-3',
+                                        )}
+                                    >
+                                        <div className="flex place-content-between items-center">
+                                            <HeaderLabel
+                                                canSort={header.column.getCanSort()}
+                                                onToggleSort={header.column.getToggleSortingHandler()}
+                                            >
+                                                {flexRender(header.column.columnDef.header, header.getContext())}
+                                            </HeaderLabel>
+                                            <Sort
+                                                canSort={header.column.getCanSort()}
+                                                isSorted={header.column.getIsSorted()}
+                                                onToggleSort={header.column.getToggleSortingHandler()}
+                                            />
+                                        </div>
+                                    </th>
+                                ))}
+                            </tr>
+                        ))}
+                    </thead>
+                    <tbody className="divide-y divide-zinc-200 text-zinc-500 dark:divide-zinc-500/40 dark:text-zinc-400">
+                        {table.getRowModel().rows.map((row) => (
+                            <tr key={row.id}>
+                                {row.getVisibleCells().map((cell, cellIndex) => (
+                                    <td
+                                        key={cell.id}
+                                        className={classnames(
+                                            'whitespace-nowrap py-4 text-sm',
+                                            cell.column.columnDef.meta?.hideUntil &&
+                                                `hidden ${cell.column.columnDef.meta?.hideUntil}:table-cell`,
+                                            cellIndex === 0 ? 'pl-4 pr-3 sm:pl-6' : 'px-3',
+                                        )}
+                                    >
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

@@ -1,12 +1,12 @@
+import { Fragment, useEffect, useRef } from 'react'
+import { Popover, Transition } from '@headlessui/react'
+import clsx from 'clsx'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Popover, Transition } from '@headlessui/react'
-import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.jpg'
-import { Fragment, useEffect, useRef } from 'react'
 
 function CloseIcon(props) {
   return (
@@ -26,13 +26,7 @@ function CloseIcon(props) {
 function ChevronDownIcon(props) {
   return (
     <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
-      <path
-        d="M1.75 1.75 4 4.25l2.25-2.5"
-        fill="none"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M1.75 1.75 4 4.25l2.25-2.5" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -115,9 +109,7 @@ function MobileNavigation(props) {
               <Popover.Button aria-label="Close menu" className="-m-1 p-1">
                 <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
               </Popover.Button>
-              <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-                Navigation
-              </h2>
+              <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Navigation</h2>
             </div>
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
@@ -144,9 +136,7 @@ function NavItem({ href, children }) {
         href={href}
         className={clsx(
           'relative block px-3 py-2 transition',
-          isActive
-            ? 'text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400'
+          isActive ? 'text-teal-500 dark:text-teal-400' : 'hover:text-teal-500 dark:hover:text-teal-400',
         )}
       >
         {children}
@@ -218,7 +208,7 @@ function AvatarContainer({ className, ...props }) {
     <div
       className={clsx(
         className,
-        'h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10'
+        'h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10',
       )}
       {...props}
     />
@@ -227,20 +217,12 @@ function AvatarContainer({ className, ...props }) {
 
 function Avatar({ large = false, className, ...props }) {
   return (
-    <Link
-      href="/"
-      aria-label="Home"
-      className={clsx(className, 'pointer-events-auto')}
-      {...props}
-    >
+    <Link href="/" aria-label="Home" className={clsx(className, 'pointer-events-auto')} {...props}>
       <Image
         src={avatarImage}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
-        className={clsx(
-          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
-          large ? 'h-16 w-16' : 'h-9 w-9'
-        )}
+        className={clsx('rounded-full bg-zinc-100 object-cover dark:bg-zinc-800', large ? 'h-16 w-16' : 'h-9 w-9')}
         priority
       />
     </Link>
@@ -268,11 +250,7 @@ export function Header() {
 
     function updateHeaderStyles() {
       let { top, height } = headerRef.current.getBoundingClientRect()
-      let scrollY = clamp(
-        window.scrollY,
-        0,
-        document.body.scrollHeight - window.innerHeight
-      )
+      let scrollY = clamp(window.scrollY, 0, document.body.scrollHeight - window.innerHeight)
 
       if (isInitial.current) {
         setProperty('--header-position', 'sticky')
@@ -321,10 +299,7 @@ export function Header() {
       let x = (scrollY * (fromX - toX)) / downDelay + toX
       x = clamp(x, fromX, toX)
 
-      setProperty(
-        '--avatar-image-transform',
-        `translate3d(${x}rem, 0, 0) scale(${scale})`
-      )
+      setProperty('--avatar-image-transform', `translate3d(${x}rem, 0, 0) scale(${scale})`)
 
       let borderScale = 1 / (toScale / scale)
       let borderX = (-toX + x) * borderScale
@@ -361,14 +336,8 @@ export function Header() {
       >
         {isHomePage && (
           <>
-            <div
-              ref={avatarRef}
-              className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
-            />
-            <Container
-              className="top-0 order-last -mb-3 pt-3"
-              style={{ position: 'var(--header-position)' }}
-            >
+            <div ref={avatarRef} className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]" />
+            <Container className="top-0 order-last -mb-3 pt-3" style={{ position: 'var(--header-position)' }}>
               <div
                 className="top-[var(--avatar-top,theme(spacing.3))] w-full"
                 style={{ position: 'var(--header-inner-position)' }}
@@ -391,11 +360,7 @@ export function Header() {
             </Container>
           </>
         )}
-        <div
-          ref={headerRef}
-          className="top-0 z-10 h-16 pt-6"
-          style={{ position: 'var(--header-position)' }}
-        >
+        <div ref={headerRef} className="top-0 z-10 h-16 pt-6" style={{ position: 'var(--header-position)' }}>
           <Container
             className="top-[var(--header-top,theme(spacing.6))] w-full"
             style={{ position: 'var(--header-inner-position)' }}
