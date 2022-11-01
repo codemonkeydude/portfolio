@@ -5,42 +5,51 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/util/formatDate'
 import { getAllProjects } from '@/util/getAllProjects'
 
-function Article({ article }) {
+function Project({ project }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={`/projects/${article.slug}`}>{article.title}</Card.Title>
-        <Card.Eyebrow as="time" dateTime={article.date} className="md:hidden" decorate>
-          {formatDate(article.date)}
+        <Card.Title href={`/projects/${project.slug}`}>{project.title}</Card.Title>
+        <Card.Eyebrow as="time" dateTime={project.date} className="md:hidden" decorate>
+          {formatDate(project.date)}
         </Card.Eyebrow>
-        <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Read article</Card.Cta>
+        <Card.Description>{project.description}</Card.Description>
+        <Card.Cta>Read more</Card.Cta>
       </Card>
-      <Card.Eyebrow as="time" dateTime={article.date} className="mt-1 hidden md:block">
-        {formatDate(article.date)}
+      <Card.Eyebrow as="time" dateTime={project.date} className="mt-1 hidden md:block">
+        {formatDate(project.date)}
       </Card.Eyebrow>
     </article>
   )
 }
 
-export default function ArticlesIndex({ articles }) {
+export default function ProjectsIndex({ projects }) {
   return (
     <>
       <Head>
-        <title>Articles - Spencer Sharp</title>
+        <title>Projects - Andy Jeffrey</title>
         <meta
           name="description"
-          content="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+          content="The good, bad, and ugly, a culmination of the applications I’ve been part of in chronological order."
         />
       </Head>
       <SimpleLayout
-        title="Writing on software design, company building, and the aerospace industry."
-        intro="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+        title="Apps I've built"
+        intro={
+          <>
+            The good, bad, and ugly, a culmination of the applications I’ve been part of in chronological order.
+            <br />
+            <i>
+              Note that this is a work in progress and not a comprehensive list of every project I’ve worked on. In
+              addition, I’m intentionally vague on some details to protect Intel’s intellectual property.
+            </i>
+          </>
+        }
       >
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
+            {projects.map((project) => (
+              <Project key={project.slug} project={project} />
             ))}
           </div>
         </div>
@@ -52,7 +61,7 @@ export default function ArticlesIndex({ articles }) {
 export async function getStaticProps() {
   return {
     props: {
-      articles: (await getAllProjects()).map(({ component, ...meta }) => meta),
+      projects: (await getAllProjects()).map(({ component, ...meta }) => meta),
     },
   }
 }
