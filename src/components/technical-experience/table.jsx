@@ -6,7 +6,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 import { CommandLineIcon } from './command-line-icon'
 import { data as DATA } from './data'
@@ -84,7 +84,7 @@ export const Table = () => {
                   <th
                     key={header.id}
                     scope="col"
-                    className={classnames(
+                    className={clsx(
                       'border-b border-zinc-200 py-3.5 text-left text-sm font-semibold dark:border-zinc-300/40',
                       header.column.columnDef.meta?.hideUntil &&
                         `hidden ${header.column.columnDef.meta?.hideUntil}:table-cell`,
@@ -115,7 +115,7 @@ export const Table = () => {
                 {row.getVisibleCells().map((cell, cellIndex) => (
                   <td
                     key={cell.id}
-                    className={classnames(
+                    className={clsx(
                       'whitespace-nowrap border-b border-zinc-300/40 py-3 text-sm dark:border-zinc-300/20',
                       cell.column.columnDef.meta?.hideUntil &&
                         `hidden ${cell.column.columnDef.meta?.hideUntil}:table-cell`,
