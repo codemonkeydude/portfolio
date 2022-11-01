@@ -31,3 +31,13 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# vercel
+.vercel
+
+# generated files
+/public/rss/
+
+# cypress
+/cypress/screenshots/
+/cypress/videos/

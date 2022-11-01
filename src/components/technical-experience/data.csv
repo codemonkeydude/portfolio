@@ -1,0 +1,49 @@
+﻿name,category,purpose,lastUsed
+AG-Grid Enterprise,UI,Component,2022
+Azure,Cloud Computing,Hosting,2022
+Azure Cognitive Search,Cloud Computing,Service,2022
+Azure Data Studio,IDE,IDE,2022
+Azure MSAL,UI,Security,2022
+Cloud Foundry,Cloud Computing,Hosting,2022
+Cypress,CI/CD,Testing,2022
+GitHub,CI/CD,Repository,2022
+GitHub Actions,CI/CD,Build,2022
+GitHub Dependabot,CI/CD,Repository,2022
+Headless UI,UI,Component,2022
+JavaScript,UI,Language,2022
+JavaScript,Middleware,Language,2022
+Jest,CI/CD,Testing,2022
+Material UI,UI,Component,2022
+Microsoft SQL Server,Database,App Data Store,2022
+Nrwl Nx,CI/CD,Framework,2022
+React,UI,Framework,2022
+react-hook-form,UI,Component,2022
+react-table,UI,Component,2022
+Storybook,UI,Framework,2022
+TailwindCSS,UI,Design System,2022
+testing-library,CI/CD,Testing,2022
+TypeScript,UI,Language,2022
+TypeScript,Middleware,Language,2022
+Visual Studio Code,IDE,IDE,2022
+GitLab,CI/CD,Repository,2021
+GitLab Pipeline,CI/CD,Build,2021
+Kendo UI,UI,Component,2021
+Nest,Middleware,Framework,2021
+NodeJS,Middleware,Framework,2021
+Postgres,Database,App Data Store,2021
+SQL,Database,Language,2021
+TSQL,Database,Language,2021
+Visual Studio,IDE,IDE,2021
+.NET,Middleware,Framework,2020
+ActiveMQ,Cloud Computing,Messaging,2020
+Apigee,Enterprise Software,API,2020
+C#,Middleware,Language,2020
+Denodo,Enterprise Software,API,2020
+GraphQL,Middleware,API,2020
+MongoDB,Database,App Data Store,2020
+APEX,Middleware,Language,2019
+Copado,CI/CD,Build,2019
+Salesforce,Enterprise Software,CRM,2019
+Ab Initio,Enterprise Software,ETL,2017
+SAP HANA,Enterprise Software,ETL,2017
+Teradata,Database,Data Warehouse,2017
