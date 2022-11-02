@@ -34,7 +34,7 @@ export default function ProjectsIndex({ projects }) {
         />
       </Head>
       <SimpleLayout
-        title="Apps I've built"
+        title={`Building line of business apps for ${new Date().getFullYear() - 2001} years`}
         intro={
           <>
             The good, bad, and ugly, a culmination of the applications I’ve been part of in chronological order.
