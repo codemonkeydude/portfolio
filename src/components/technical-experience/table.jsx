@@ -75,7 +75,7 @@ export const Table = () => {
           <span className="ml-3">Technical Experience</span>
         </h2>
       </div>
-      <div className="h-[400px] overflow-auto">
+      <div className="h-[400px] overflow-auto scrollbar-thin scrollbar-track-zinc-100 scrollbar-thumb-zinc-300 dark:scrollbar-track-zinc-300 dark:scrollbar-thumb-zinc-600">
         <table className="min-w-full table-fixed border-separate border-spacing-0">
           <thead className="sticky top-0 z-20 bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
             {table.getHeaderGroups().map((headerGroup) => (

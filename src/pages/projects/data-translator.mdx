@@ -1,0 +1,51 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { Table as ExperienceTable } from '@/components/technical-experience/table'
+
+export const meta = {
+  author: 'Andy Jeffrey',
+  date: '2018-03-24',
+  title: 'Data Translator',
+  description:
+    'Started as a simple 1 to 1 data translator that morphed into a sophisticated ETL application used to accelerate Merger and Acquisition onboarding.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+This is an example of the type of project I love to work on. One that starts simple and grows into something special because I could deliver the application in a way that inspired the possibilities.
+
+The initial requirements were to build a basic UI that allowed users to manage a 1:1 data conversion. For example, our company called a value “X” and the acquisitioned company called it “Y”. Our app would allow a user to access the mapping table and update it.
+
+Company 1 Value | Company 2 Value
+
+Meanwhile another team was configuring a MuleSoft workflow to use our map to translate files moving back and forth between Intel and the acquisition’s systems. My part was easy, and I delivered it. However, the other team ran into limitations which had to do with the file sizes which could be up to 300 Mb. The Architect turned to me, and asked if could I expand my application to do workflow.
+
+Then x:x translations
+Then finance transformations
+Files, then messaging (XML)
+
+## Stack
+
+| Technology           | Description                            |
+| -------------------- | -------------------------------------- |
+| AngularJS            | UI framework                           |
+| Kendo UI             | UI component library                   |
+| Javascript           | Language                               |
+| .NET Framework       | Middleware framework                   |
+| NUnit                | Middleware test framework              |
+| Microsoft SQL Server | Internal cloud hosted database (DBaaS) |
+| ActiveMQ             | Internal cloud hosted messaging        |
+| Cloud Foundry        | Internal cloud hosting platform        |
+| GitLab               | Repository                             |
+| Teamcity             | CI/CD                                  |
+| Denodo               | API to virtualized data                |
+| Entity Framework     | ORM                                    |
+
+<ExperienceTable />
+
+## Description
+
+## Architecture
+
+## Accomplishments
+
+## Bulk Import Technique
