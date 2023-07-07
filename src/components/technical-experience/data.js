@@ -33,7 +33,7 @@ export const data = [
         "name": "Cloud Foundry",
         "category": "Cloud Computing",
         "purpose": "Hosting",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "Cypress",
@@ -45,19 +45,19 @@ export const data = [
         "name": "GitHub",
         "category": "CI/CD",
         "purpose": "Repository",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "GitHub Actions",
         "category": "CI/CD",
         "purpose": "Build",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "GitHub Dependabot",
         "category": "CI/CD",
         "purpose": "Repository",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "Headless UI",
@@ -69,19 +69,19 @@ export const data = [
         "name": "JavaScript",
         "category": "UI",
         "purpose": "Language",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "JavaScript",
         "category": "Middleware",
         "purpose": "Language",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "Jest",
         "category": "CI/CD",
         "purpose": "Testing",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "Material UI",
@@ -99,13 +99,13 @@ export const data = [
         "name": "Nrwl Nx",
         "category": "CI/CD",
         "purpose": "Framework",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "React",
         "category": "UI",
         "purpose": "Framework",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "react-hook-form",
@@ -141,19 +141,19 @@ export const data = [
         "name": "TypeScript",
         "category": "UI",
         "purpose": "Language",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "TypeScript",
         "category": "Middleware",
         "purpose": "Language",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "Visual Studio Code",
         "category": "IDE",
         "purpose": "IDE",
-        "lastUsed": 2022
+        "lastUsed": 2023
     },
     {
         "name": "GitLab",
@@ -177,31 +177,31 @@ export const data = [
         "name": "Nest",
         "category": "Middleware",
         "purpose": "Framework",
-        "lastUsed": 2021
+        "lastUsed": 2023
     },
     {
         "name": "NodeJS",
         "category": "Middleware",
         "purpose": "Framework",
-        "lastUsed": 2021
+        "lastUsed": 2023
     },
     {
         "name": "Postgres",
         "category": "Database",
         "purpose": "App Data Store",
-        "lastUsed": 2021
+        "lastUsed": 2023
     },
     {
         "name": "SQL",
         "category": "Database",
         "purpose": "Language",
-        "lastUsed": 2021
+        "lastUsed": 2023
     },
     {
         "name": "TSQL",
         "category": "Database",
         "purpose": "Language",
-        "lastUsed": 2021
+        "lastUsed": 2023
     },
     {
         "name": "Visual Studio",
@@ -219,13 +219,13 @@ export const data = [
         "name": "ActiveMQ",
         "category": "Cloud Computing",
         "purpose": "Messaging",
-        "lastUsed": 2020
+        "lastUsed": 2023
     },
     {
         "name": "Apigee",
         "category": "Enterprise Software",
         "purpose": "API",
-        "lastUsed": 2020
+        "lastUsed": 2023
     },
     {
         "name": "C#",
@@ -237,7 +237,7 @@ export const data = [
         "name": "Denodo",
         "category": "Enterprise Software",
         "purpose": "API",
-        "lastUsed": 2020
+        "lastUsed": 2023
     },
     {
         "name": "GraphQL",
